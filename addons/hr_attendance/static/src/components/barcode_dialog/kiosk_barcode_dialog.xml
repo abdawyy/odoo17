@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="hr_attendance.BarcodeDialog" t-inherit="web.BarcodeDialog">
+        <xpath expr="//CropOverlay" position="replace">
+            <video t-ref="videoPreview" muted="true" autoplay="true" playsinline="true" class="w-100 h-100"/>
+        </xpath>
+    </t>
+</templates>

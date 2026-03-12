@@ -1,0 +1,142 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* web_tour_recorder
+# 
+# Translators:
+# Wil Odoo, 2024
+# Erwin van der Ploeg <erwin@odooexperts.nl>, 2024
+# Manon Rondou, 2024
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~17.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-06 10:25+0000\n"
+"PO-Revision-Date: 2024-08-18 03:00+0000\n"
+"Last-Translator: Manon Rondou, 2024\n"
+"Language-Team: Dutch (https://app.transifex.com/odoo/teams/41243/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder.xml:0
+msgid "(recording keyboard)"
+msgstr "(opname toetsenbord)"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder.xml:0
+msgid "(run:"
+msgstr "(Run:"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder_service.js:0
+msgid "Custom tour '%s' already exist!"
+msgstr "Aangepaste tour '%s' bestaat reeds!"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder_service.js:0
+msgid "Custom tour '%s' has been added."
+msgstr "Aangepaste tour '%s' is toegevoegd."
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder.xml:0
+msgid "Custom tours"
+msgstr "Aangepaste tours"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder.xml:0
+msgid "Delete"
+msgstr "Verwijderen"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/debug_manager.js:0
+msgid "Disable Tour Recorder"
+msgstr "Tourrecorder uitschakelen"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder.xml:0
+msgid "Export JS"
+msgstr "JS exporteren"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder.xml:0
+msgid "Export JSON"
+msgstr "JSON exporteren"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder.xml:0
+msgid "Import a tour custom from JSON file"
+msgstr "Een aangepaste tour importeren vanuit een JSON-bestand"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder.xml:0
+msgid "Name:"
+msgstr "Naam:"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder.xml:0
+msgid "Record"
+msgstr "Record"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder.xml:0
+msgid "Save"
+msgstr "Opslaan"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/debug_manager.js:0
+msgid "Start Tour Recorder"
+msgstr "Tourrecorder starten"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder.xml:0
+msgid "Steps"
+msgstr "Stappen"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder.xml:0
+msgid "Steps:"
+msgstr "Stappen:"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder_service.js:0
+msgid "Tour '%s' correctly deleted."
+msgstr "Tour '%s' ccorrect verwijderd."
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder.xml:0
+msgid "Url:"
+msgstr "Website:"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder.xml:0
+msgid "name_of_the_tour"
+msgstr "naam_van_de_reis"
+
+#. module: web_tour_recorder
+#. odoo-javascript
+#: code:addons/web_tour_recorder/static/src/tour_recorder/tour_recorder.xml:0
+msgid "trigger"
+msgstr "trigger"

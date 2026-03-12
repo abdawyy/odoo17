@@ -1,0 +1,389 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_twitter
+# 
+# Translators:
+# Wil Odoo, 2024
+# Chloe Wang, 2024
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~17.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-06 10:25+0000\n"
+"PO-Revision-Date: 2024-07-16 11:42+0000\n"
+"Last-Translator: Chloe Wang, 2024\n"
+"Language-Team: Chinese (China) (https://app.transifex.com/odoo/teams/41243/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid ", <strong>create a project</strong> with the following information:"
+msgstr "，用以下信息<strong>创建一个项目</strong>："
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid ""
+", click on <strong>Elevated</strong> then on <strong>Apply</strong> and "
+"finally complete the form."
+msgstr "，点击<strong>提升</strong>然后点击<strong>应用</strong>，最后完成表单。"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid ""
+"<i class=\"oi oi-arrow-right\"/>\n"
+"                            Show me how to obtain the X API key and X API secret"
+msgstr ""
+"<i class=\"oi oi-arrow-right\"/>\n"
+"                            告诉我如何获取 X API 密钥和 X API 秘密"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "<strong>App Name: </strong> choose a unique name"
+msgstr "<strong>应用名称：</strong>选择一个独特的名称"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "<strong>Description: </strong> Odoo X Integration"
+msgstr "<strong>描述：</strong> Odoo X 整合"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "<strong>Name: </strong> Odoo X Integration"
+msgstr "<strong>名称：</strong> Odoo X 整合"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "<strong>Use Case: </strong> Embedding Posts in a website"
+msgstr "<strong>使用案例：</strong> 在网站中嵌入帖文"
+
+#. module: website_twitter
+#: model:ir.model.fields,field_description:website_twitter.field_res_config_settings__twitter_api_key
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "API Key"
+msgstr "API密钥"
+
+#. module: website_twitter
+#: model:ir.model.fields,field_description:website_twitter.field_res_config_settings__twitter_api_secret
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "API secret"
+msgstr "API 密钥"
+
+#. module: website_twitter
+#. odoo-python
+#: code:addons/website_twitter/models/res_config_settings.py:0
+msgid ""
+"Authentication credentials were missing or incorrect. Maybe screen name "
+"posts are protected."
+msgstr "认证凭证丢失或不正确。可能是网名帖子受到了保护。"
+
+#. module: website_twitter
+#: model:ir.model,name:website_twitter.model_res_config_settings
+msgid "Config Settings"
+msgstr "配置设置"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "Copy/Paste the API Key and API Key Secret values into the above fields"
+msgstr "复制/粘贴API 密钥和API 密钥的秘密值到上述字段"
+
+#. module: website_twitter
+#: model:ir.model.fields,field_description:website_twitter.field_website_twitter_tweet__create_uid
+msgid "Created by"
+msgstr "创建人"
+
+#. module: website_twitter
+#: model:ir.model.fields,field_description:website_twitter.field_website_twitter_tweet__create_date
+msgid "Created on"
+msgstr "创建日期"
+
+#. module: website_twitter
+#: model:ir.model.fields,field_description:website_twitter.field_website_twitter_tweet__display_name
+msgid "Display Name"
+msgstr "显示名称"
+
+#. module: website_twitter
+#: model:ir.model.fields,field_description:website_twitter.field_res_config_settings__twitter_screen_name
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "Favorites From"
+msgstr "收藏来源"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "Get Elevated access by going to"
+msgstr "获取提升的访问权限通过转到"
+
+#. module: website_twitter
+#: model:ir.model.fields,field_description:website_twitter.field_website__twitter_screen_name
+msgid "Get favorites from this screen name"
+msgstr "获取这个名称的收藏"
+
+#. module: website_twitter
+#. odoo-python
+#: code:addons/website_twitter/models/res_config_settings.py:0
+msgid "HTTP Error: Something is misconfigured"
+msgstr "HTTP 错误：配置错误"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "How to configure the X API access"
+msgstr "如何配置 X API 访问"
+
+#. module: website_twitter
+#: model:ir.model.fields,field_description:website_twitter.field_website_twitter_tweet__id
+msgid "ID"
+msgstr "ID"
+
+#. module: website_twitter
+#. odoo-python
+#: code:addons/website_twitter/models/res_config_settings.py:0
+msgid "Internet connection refused: We failed to reach a X server."
+msgstr "互联网连接被拒绝：我们无法访问 X 服务器。"
+
+#. module: website_twitter
+#: model:ir.model.fields,field_description:website_twitter.field_website_twitter_tweet__write_uid
+msgid "Last Updated by"
+msgstr "最后更新人"
+
+#. module: website_twitter
+#: model:ir.model.fields,field_description:website_twitter.field_website_twitter_tweet__write_date
+msgid "Last Updated on"
+msgstr "上次更新日期"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "Log in or create an account on"
+msgstr "登入或创建一个账户在"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "On the"
+msgstr "于此"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid ""
+"Once connected, and if not already done, complete the X portal access "
+"process on"
+msgstr "连接后，如果尚未完成，请在以下页面完成 X 门户访问流程"
+
+#. module: website_twitter
+#. odoo-python
+#: code:addons/website_twitter/controllers/main.py:0
+msgid ""
+"Please set a X screen name to load favorites from, in the Website Settings "
+"(it does not have to be yours)"
+msgstr "请在网站设置中，设置一个 X 屏幕名称以从中加载收藏夹（不一定是您的）"
+
+#. module: website_twitter
+#. odoo-python
+#: code:addons/website_twitter/controllers/main.py:0
+msgid "Please set the X API Key and Secret in the Website Settings."
+msgstr "请在网站设置中设置 X API 密钥和秘密。"
+
+#. module: website_twitter
+#: model:ir.model.fields,field_description:website_twitter.field_website_twitter_tweet__tweet
+msgid "Posts"
+msgstr "帖子"
+
+#. module: website_twitter
+#. odoo-javascript
+#: code:addons/website_twitter/static/src/js/website.twitter.editor.js:0
+msgid "Reload"
+msgstr "重新载入"
+
+#. module: website_twitter
+#. odoo-python
+#: code:addons/website_twitter/models/res_config_settings.py:0
+msgid ""
+"Request cannot be served due to the applications rate limit having been "
+"exhausted for the resource."
+msgstr "无法为这个请求提供服务，因为资源的应用限制率已经达到极限。"
+
+#. module: website_twitter
+#: model:ir.model.fields,field_description:website_twitter.field_website_twitter_tweet__screen_name
+msgid "Screen Name"
+msgstr "屏幕名称"
+
+#. module: website_twitter
+#: model:ir.model.fields,help:website_twitter.field_res_config_settings__twitter_screen_name
+msgid ""
+"Screen Name of the X Account from which you want to load favorites.It does "
+"not have to match the API Key/Secret."
+msgstr "您要从中加载收藏夹的 X 帐户的屏幕名称。它不必与 API 密钥/秘密匹配。"
+
+#. module: website_twitter
+#. odoo-python
+#: code:addons/website_twitter/models/res_config_settings.py:0
+msgid "The X servers are up, but overloaded with requests. Try again later."
+msgstr "X 服务器已启动，但请求过载。稍后再试。"
+
+#. module: website_twitter
+#. odoo-python
+#: code:addons/website_twitter/models/res_config_settings.py:0
+msgid ""
+"The X servers are up, but the request could not be serviced due to some "
+"failure within our stack. Try again later."
+msgstr "X 服务器已启动，但由于我们的堆栈出现故障，无法为请求提供服务。稍后再试。"
+
+#. module: website_twitter
+#. odoo-python
+#: code:addons/website_twitter/models/res_config_settings.py:0
+msgid ""
+"The request is understood, but it has been refused or access is not allowed."
+" Please check your X API Key and Secret."
+msgstr "请求已收到，但被拒绝或不允许访问。请检查您的 X API 密钥和秘密。"
+
+#. module: website_twitter
+#. odoo-python
+#: code:addons/website_twitter/models/res_config_settings.py:0
+msgid ""
+"The request was invalid or cannot be otherwise served. Requests without "
+"authentication are considered invalid and will yield this response."
+msgstr "请求无效或者无法提供此服务。没有认证请求被视为无效，并产生此反应。"
+
+#. module: website_twitter
+#. odoo-python
+#: code:addons/website_twitter/models/res_config_settings.py:0
+msgid "There was no new data to return."
+msgstr "没有新数据返回。"
+
+#. module: website_twitter
+#: model:ir.model,name:website_twitter.model_website
+#: model:ir.model.fields,field_description:website_twitter.field_website_twitter_tweet__website_id
+msgid "Website"
+msgstr "网站"
+
+#. module: website_twitter
+#: model:ir.model,name:website_twitter.model_website_twitter_tweet
+msgid "Website X"
+msgstr "网站 X"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "X API Credentials"
+msgstr "X API 凭证"
+
+#. module: website_twitter
+#: model:ir.model.fields,help:website_twitter.field_website__twitter_api_key
+msgid "X API Key"
+msgstr "X API 密钥"
+
+#. module: website_twitter
+#: model:ir.model.fields,help:website_twitter.field_website__twitter_api_secret
+msgid "X API Secret"
+msgstr "X API 秘密"
+
+#. module: website_twitter
+#: model:ir.model.fields,field_description:website_twitter.field_website__twitter_api_key
+msgid "X API key"
+msgstr "X API 密钥"
+
+#. module: website_twitter
+#: model:ir.model.fields,help:website_twitter.field_res_config_settings__twitter_api_key
+msgid "X API key you can get it from https://apps.twitter.com/"
+msgstr "您可以从 https://apps.twitter.com/ 获取 X API 密钥。"
+
+#. module: website_twitter
+#: model:ir.model.fields,field_description:website_twitter.field_website__twitter_api_secret
+msgid "X API secret"
+msgstr "X API 秘密"
+
+#. module: website_twitter
+#: model:ir.model.fields,help:website_twitter.field_res_config_settings__twitter_api_secret
+msgid "X API secret you can get it from https://apps.twitter.com/"
+msgstr "您可以从 https://apps.twitter.com/ 获取 X API 秘密。"
+
+#. module: website_twitter
+#. odoo-javascript
+#: code:addons/website_twitter/static/src/xml/website.twitter.xml:0
+msgid "X Configuration"
+msgstr "X 配置"
+
+#. module: website_twitter
+#: model:ir.model.fields,field_description:website_twitter.field_website_twitter_tweet__tweet_id
+msgid "X ID"
+msgstr "X 识别码"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "X Portal"
+msgstr "X 门户"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "X Roller"
+msgstr "X 滚动器"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.website_twitter_snippet
+msgid "X Scroller"
+msgstr "X 滚动器"
+
+#. module: website_twitter
+#. odoo-python
+#: code:addons/website_twitter/models/res_config_settings.py:0
+msgid "X authorization error! Please double-check your X API Key and Secret!"
+msgstr "X 授权错误！请仔细检查您的 X API 密钥和密码！"
+
+#. module: website_twitter
+#. odoo-python
+#: code:addons/website_twitter/models/res_config_settings.py:0
+msgid "X is down or being upgraded."
+msgstr "X 已关闭或正在升级。"
+
+#. module: website_twitter
+#. odoo-python
+#: code:addons/website_twitter/models/res_config_settings.py:0
+msgid ""
+"X seems broken. Please retry later. You may consider posting an issue on X "
+"forums to get help."
+msgstr "X 似乎已损坏。请稍后重试。您可以考虑在 X 论坛上发布问题，以获得帮助。"
+
+#. module: website_twitter
+#: model:ir.model.fields,field_description:website_twitter.field_res_config_settings__twitter_server_uri
+msgid "X server uri"
+msgstr "X 服务器 URI"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "X tutorial"
+msgstr "X 教程"
+
+#. module: website_twitter
+#. odoo-python
+#: code:addons/website_twitter/controllers/main.py:0
+msgid ""
+"X user @%(username)s has less than 12 favorite posts. Please add more or "
+"choose a different screen name."
+msgstr "X 用户 %(username)s 的收藏帖子数少于 12 个。请添加更多或选择其他网名。"
+
+#. module: website_twitter
+#. odoo-javascript
+#: code:addons/website_twitter/static/src/xml/website.twitter.xml:0
+msgid "X's user"
+msgstr "X 用户"
+
+#. module: website_twitter
+#: model:ir.actions.server,name:website_twitter.ir_cron_twitter_actions_ir_actions_server
+msgid "X: Fetch new favorites"
+msgstr "X：获取新的收藏"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "https://developer.twitter.com/"
+msgstr "https://developer.twitter.com/"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "https://developer.twitter.com/en/portal/products"
+msgstr "https://developer.twitter.com/en/portal/products"
+
+#. module: website_twitter
+#: model_terms:ir.ui.view,arch_db:website_twitter.res_config_settings_view_form
+msgid "https://developer.twitter.com/portal/"
+msgstr "https://developer.twitter.com/portal/"

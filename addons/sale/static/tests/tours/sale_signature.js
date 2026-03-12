@@ -1,0 +1,75 @@
+/** @odoo-module **/
+
+import { registry } from "@web/core/registry";
+
+// This tour relies on data created on the Python test.
+registry.category("web_tour.tours").add('sale_signature', {
+    test: true,
+    url: '/my/quotes',
+    steps: () => [
+    {
+        content: "open the test SO",
+        trigger: 'a:contains(/^test SO$/)',
+        run: "click",
+    },
+    {
+        content: "click sign",
+        trigger: 'a:contains("Sign")',
+        run: "click",
+    },
+    {
+        content: "check submit is enabled",
+        trigger: '.o_portal_sign_submit:enabled',
+    },
+    {
+        content: "click select style",
+        trigger: '.o_web_sign_auto_select_style button',
+        run: "click",
+    },
+    {
+        content: "click style 4",
+        trigger: ".o-dropdown-item:eq(3)",
+        in_modal: false,
+        run: "click",
+    },
+    {
+        content: "click submit",
+        trigger: '.o_portal_sign_submit:enabled',
+        run: "click",
+    },
+    {
+        content: "check it's confirmed",
+        trigger: '#quote_content:contains("Thank You")',
+        run: "click",
+    }, {
+        trigger: '#quote_content',
+        run: function () {
+            window.location.href = window.location.origin + '/web';
+        },  // Avoid race condition at the end of the tour by returning to the home page.
+    },
+    {
+        trigger: 'nav',
+    }
+]});
+
+registry.category("web_tour.tours").add("sale_signature_without_name", {
+    steps: () => [
+        {
+            content: "Sign & Pay",
+            trigger: ":iframe .o_portal_sale_sidebar .btn-primary",
+            alt_trigger: ".o_portal_sale_sidebar .btn-primary",
+            run: "click",
+        },
+        {
+            content: "click submit",
+            trigger: ":iframe .o_portal_sign_submit:enabled",
+            alt_trigger: ".o_portal_sign_submit:enabled",
+            run: "click",
+        },
+        {
+            content: "check error because no name",
+            trigger: ':iframe .o_portal_sign_error_msg:contains("Signature is missing.")',
+            alt_trigger: '.o_portal_sign_error_msg:contains("Signature is missing.")'
+        },
+    ],
+});

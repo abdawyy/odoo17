@@ -1,0 +1,23 @@
+.o-discuss-ChannelInvitation {
+    min-height: 0;
+}
+
+.o-discuss-ChannelInvitation-has-size-constraints {
+    width: Min(95vw, 400px);
+    max-height: Min(calc(100vh - 140px), 530px);
+}
+
+.o-discuss-ChannelInvitation-selectedList {
+    max-height: 100px;
+}
+
+.o-discuss-ChannelInvitation-avatar {
+    width: $o-mail-Avatar-size;
+    height: $o-mail-Avatar-size;
+}
+
+.o-discuss-ChannelInvitation-invitationBox {
+    position: sticky;
+    background-color: $o-view-background-color;
+    bottom: - map-get($spacers, 3); // Ignore p-3 class of ActionPanel
+}

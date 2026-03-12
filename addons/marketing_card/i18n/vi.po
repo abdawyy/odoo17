@@ -1,0 +1,1029 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* marketing_card
+# 
+# Translators:
+# Wil Odoo, 2024
+# Thi Huong Nguyen, 2025
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~17.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-06 10:23+0000\n"
+"PO-Revision-Date: 2024-08-18 03:00+0000\n"
+"Last-Translator: Thi Huong Nguyen, 2025\n"
+"Language-Team: Vietnamese (https://app.transifex.com/odoo/teams/41243/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: marketing_card
+#. odoo-python
+#: code:addons/marketing_card/models/card_campaign_element.py:0
+msgid "%(field_path)s cannot be used as an image value for %(element_role)s"
+msgstr ""
+"Không thể sử dụng %(field_path)s làm giá trị hình ảnh cho %(element_role)s"
+
+#. module: marketing_card
+#. odoo-python
+#: code:addons/marketing_card/models/card_campaign_element.py:0
+msgid "%(model_name)s.%(field_name)s cannot be used for card campaigns."
+msgstr ""
+"%(model_name)s.%(field_path)s không thể được sử dụng cho chiến dịch thiệp."
+
+#. module: marketing_card
+#. odoo-python
+#: code:addons/marketing_card/models/card_campaign_element.py:0
+msgid "%(model_name)s.%(field_name)s does not seem reachable."
+msgstr "%(model_name)s.%(field_name)s có thể không thể tiếp cận được."
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_kanban
+msgid ""
+"<i class=\"fa fa-fw fa-mouse-pointer\" aria-label=\"Clicks\" role=\"img\" "
+"title=\"Clicks\"/>"
+msgstr ""
+"<i class=\"fa fa-fw fa-mouse-pointer\" aria-label=\"Lượt nhấp\" role=\"img\""
+" title=\"Lượt nhấp\"/>"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_kanban
+msgid "<i class=\"fa fa-fw fa-share\" aria-label=\"Shares\" role=\"img\" title=\"Shares\"/>"
+msgstr ""
+"<i class=\"fa fa-fw fa-share\" aria-label=\"Lượt chia sẻ\" role=\"img\" "
+"title=\"Lượt chia sẻ\"/>"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_preview
+msgid "<small>Where does this link to?</small>"
+msgstr "<small>Liên kết này dẫn đến đâu?</small>"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
+msgid ""
+"<span class=\"o_stat_text\">\n"
+"                                Clicks\n"
+"                            </span>"
+msgstr ""
+"<span class=\"o_stat_text\">\n"
+"                                Lượt nhấp\n"
+"                            </span>"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
+msgid ""
+"<span class=\"o_stat_text\">\n"
+"                                Opened\n"
+"                            </span>"
+msgstr ""
+"<span class=\"o_stat_text\">\n"
+"                                Đã mở\n"
+"                            </span>"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
+msgid ""
+"<span class=\"o_stat_text\">\n"
+"                                Sent\n"
+"                            </span>"
+msgstr ""
+"<span class=\"o_stat_text\">\n"
+"                                Đã gửi\n"
+"                            </span>"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
+msgid ""
+"<span class=\"o_stat_text\">\n"
+"                                Shared\n"
+"                            </span>"
+msgstr ""
+"<span class=\"o_stat_text\">\n"
+"                                Đã chia sẻ\n"
+"                            </span>"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__message_needaction
+msgid "Action Needed"
+msgstr "Tác vụ cần thiết"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__active
+msgid "Active"
+msgstr "Đang hoạt động"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__activity_ids
+msgid "Activities"
+msgstr "Hoạt động"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Hoạt động ngoại lệ"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__activity_state
+msgid "Activity State"
+msgstr "Trạng thái hoạt động"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Biểu tượng loại hoạt động"
+
+#. module: marketing_card
+#. odoo-python
+#: code:addons/marketing_card/controllers/marketing_card.py:0
+msgid "An error occurred when generating the image"
+msgstr "Đã xảy ra lỗi khi tạo hình ảnh"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_search
+msgid "Archived"
+msgstr "Đã lưu trữ"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__message_attachment_count
+msgid "Attachment Count"
+msgstr "Số lượng khấu trừ"
+
+#. module: marketing_card
+#: model:ir.model.fields.selection,name:marketing_card.selection__card_campaign_element__card_element_role__background
+msgid "Background"
+msgstr "Nền"
+
+#. module: marketing_card
+#: model:ir.model,name:marketing_card.model_base
+msgid "Base"
+msgstr "Cơ sở"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__body_html
+#: model:ir.model.fields,field_description:marketing_card.field_card_template__body
+msgid "Body"
+msgstr "Nội dung"
+
+#. module: marketing_card
+#: model:ir.model.fields.selection,name:marketing_card.selection__card_campaign_element__card_element_role__button
+msgid "Button"
+msgstr "Nút"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_element__campaign_id
+#: model:ir.model.fields,field_description:marketing_card.field_card_card__campaign_id
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_card_view_search
+msgid "Campaign"
+msgstr "Chiến dịch"
+
+#. module: marketing_card
+#: model:ir.ui.menu,name:marketing_card.card_campaign_menu
+msgid "Campaigns"
+msgstr "Chiến dịch"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_card_share_view_form
+msgid "Cancel"
+msgstr "Hủy"
+
+#. module: marketing_card
+#: model:ir.actions.act_window,name:marketing_card.cards_card_action
+msgid "Card"
+msgstr "Thẻ"
+
+#. module: marketing_card
+#: model:ir.actions.act_window,name:marketing_card.card_campaign_action
+msgid "Card Campaign"
+msgstr "Chiến dịch thiệp"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__card_click_count
+msgid "Card Click Count"
+msgstr "Số lượt nhấp thiệp"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__card_count
+msgid "Card Count"
+msgstr "Số thiệp"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__card_element_ids
+msgid "Card Element"
+msgstr "Thành phần của thiệp"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_element__card_element_image
+msgid "Card Element Image"
+msgstr "Hình ảnh thành phần của thiệp"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_element__card_element_role
+msgid "Card Element Role"
+msgstr "Vai trò thành phần của thiệp"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_element__card_element_text
+msgid "Card Element Text"
+msgstr "Văn bản thành phần của thiệp"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
+msgid "Card Layout"
+msgstr "Bố cục thiệp"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__card_share_count
+msgid "Card Share Count"
+msgstr "Số lượt chia sẻ thiệp"
+
+#. module: marketing_card
+#: model:ir.actions.act_window,name:marketing_card.card_template_action
+#: model:ir.ui.menu,name:marketing_card.cards_template_menu
+msgid "Card Template"
+msgstr "Mẫu thiệp"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_preview
+msgid "Click here for your reward!"
+msgstr "Nhấp vào đây để nhận phần thưởng!"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_tag__color
+msgid "Color"
+msgstr "Màu sắc"
+
+#. module: marketing_card
+#: model_terms:ir.actions.act_window,help:marketing_card.cards_card_action
+msgid "Create a Card Campaign to send cards to your partners"
+msgstr "Tạo Chiến dịch thiếp để gửi thiệp cho đối tác của bạn"
+
+#. module: marketing_card
+#: model_terms:ir.actions.act_window,help:marketing_card.card_campaign_action
+msgid "Create a Sharing Campaign!"
+msgstr "Tạo một Chiến dịch lan toả!"
+
+#. module: marketing_card
+#: model_terms:ir.actions.act_window,help:marketing_card.card_template_action
+msgid "Create a design to use in Card Campaigns"
+msgstr "Tạo thiết kế để sử dụng trong Chiến dịch thiệp"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__create_uid
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_element__create_uid
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_tag__create_uid
+#: model:ir.model.fields,field_description:marketing_card.field_card_card__create_uid
+#: model:ir.model.fields,field_description:marketing_card.field_card_card_share__create_uid
+#: model:ir.model.fields,field_description:marketing_card.field_card_template__create_uid
+msgid "Created by"
+msgstr "Được tạo bởi"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__create_date
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_element__create_date
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_tag__create_date
+#: model:ir.model.fields,field_description:marketing_card.field_card_card__create_date
+#: model:ir.model.fields,field_description:marketing_card.field_card_card_share__create_date
+#: model:ir.model.fields,field_description:marketing_card.field_card_template__create_date
+msgid "Created on"
+msgstr "Được tạo vào"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_template__default_background
+msgid "Default Background"
+msgstr "Hình nền mặc định"
+
+#. module: marketing_card
+#: model:ir.model.fields,help:marketing_card.field_card_campaign__post_suggestion
+msgid "Description below the card and default text when sharing on X"
+msgstr "Mô tả bên dưới thiệp và văn bản mặc định khi chia sẻ trên X"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__card_template_id
+msgid "Design"
+msgstr "Thiết kế"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__display_name
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_element__display_name
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_tag__display_name
+#: model:ir.model.fields,field_description:marketing_card.field_card_card__display_name
+#: model:ir.model.fields,field_description:marketing_card.field_card_card_share__display_name
+#: model:ir.model.fields,field_description:marketing_card.field_card_template__display_name
+msgid "Display Name"
+msgstr "Tên hiển thị"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_card_share__domain
+msgid "Domain"
+msgstr "Miền"
+
+#. module: marketing_card
+#: model:ir.model.fields.selection,name:marketing_card.selection__card_campaign_element__value_type__field
+msgid "Dynamic"
+msgstr "Động"
+
+#. module: marketing_card
+#: model:ir.model.constraint,message:marketing_card.constraint_card_campaign_element_role_uniq
+msgid "Each campaign should only have one element for each role."
+msgstr "Mỗi chiến dịch chỉ nên có một thành phần cho mỗi vai trò."
+
+#. module: marketing_card
+#: model:ir.model.constraint,message:marketing_card.constraint_card_card_campaign_record_unique
+msgid "Each record should be unique for a campaign"
+msgstr "Mỗi bản ghi cho mỗi chiến dịch phải là duy nhất"
+
+#. module: marketing_card
+#: model:ir.model,name:marketing_card.model_card_card_share
+msgid "Email Marketing Cards Wizard"
+msgstr "Công cụ Thiệp marketing qua email"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_element__field_path
+msgid "Field Path"
+msgstr "Đường dẫn trường"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_card_view_search
+msgid "Filter By"
+msgstr "Lọc bởi"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__message_follower_ids
+msgid "Followers"
+msgstr "Người theo dõi"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Người theo dõi (Đối tác)"
+
+#. module: marketing_card
+#: model:ir.model.fields,help:marketing_card.field_card_campaign__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Font biểu tượng, ví dụ: fa-tasks"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_search
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_card_view_search
+msgid "Group By"
+msgstr "Nhóm theo"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__has_message
+msgid "Has Message"
+msgstr "Có tin nhắn"
+
+#. module: marketing_card
+#: model:ir.model.fields.selection,name:marketing_card.selection__card_campaign_element__card_element_role__header
+msgid "Header"
+msgstr "Header"
+
+#. module: marketing_card
+#. odoo-python
+#: code:addons/marketing_card/wizards/card_card_share.py:0
+msgid ""
+"Hello everyone\n"
+"\n"
+"Here's the link to advertise your participation.\n"
+"            Your help with this promotion would be greatly appreciated!\n"
+"\n"
+"Many thanks"
+msgstr ""
+"Xin chào,\n"
+"\n"
+"Đây là liên kết để lan toả sự tham gia của bạn.\n"
+"Chúng tôi rất trân trọng vì bạn đã chung tay quảng bá!\n"
+"\n"
+"Cảm ơn bạn rất nhiều!"
+
+#. module: marketing_card
+#: model:ir.module.category,description:marketing_card.module_category_marketing_card
+msgid "Helps you manage marketing card campaigns."
+msgstr "Giúp bạn quản lý các chiến dịch thiệp marketing."
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__id
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_element__id
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_tag__id
+#: model:ir.model.fields,field_description:marketing_card.field_card_card__id
+#: model:ir.model.fields,field_description:marketing_card.field_card_card_share__id
+#: model:ir.model.fields,field_description:marketing_card.field_card_template__id
+msgid "ID"
+msgstr "ID"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__activity_exception_icon
+msgid "Icon"
+msgstr "Biểu tượng"
+
+#. module: marketing_card
+#: model:ir.model.fields,help:marketing_card.field_card_campaign__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Biểu tượng cho thấy một hoạt động ngoại lệ."
+
+#. module: marketing_card
+#: model:ir.model.fields,help:marketing_card.field_card_campaign__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Nếu chọn, bạn cần chú ý tới các tin nhắn mới."
+
+#. module: marketing_card
+#: model:ir.model.fields,help:marketing_card.field_card_campaign__message_has_error
+#: model:ir.model.fields,help:marketing_card.field_card_campaign__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Nếu chọn, một số tin nhắn sẽ có lỗi gửi."
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_card__image
+#: model:ir.model.fields.selection,name:marketing_card.selection__card_campaign_element__render_type__image
+msgid "Image"
+msgstr "Hình ảnh"
+
+#. module: marketing_card
+#: model:ir.model.fields.selection,name:marketing_card.selection__card_campaign_element__card_element_role__image_1
+msgid "Image 1"
+msgstr "Hình ảnh 1"
+
+#. module: marketing_card
+#: model:ir.model.fields.selection,name:marketing_card.selection__card_campaign_element__card_element_role__image_2
+msgid "Image 2"
+msgstr "Hình ảnh 2"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__image_preview
+msgid "Image Preview"
+msgstr "Xem trước hình ảnh"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__message_is_follower
+msgid "Is Follower"
+msgstr "Là người theo dõi"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
+msgid "Join me at this event!"
+msgstr "Hãy cùng tôi tham gia sự kiện này!"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__lang
+msgid "Language"
+msgstr "Ngôn ngữ"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__write_uid
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_element__write_uid
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_tag__write_uid
+#: model:ir.model.fields,field_description:marketing_card.field_card_card__write_uid
+#: model:ir.model.fields,field_description:marketing_card.field_card_card_share__write_uid
+#: model:ir.model.fields,field_description:marketing_card.field_card_template__write_uid
+msgid "Last Updated by"
+msgstr "Cập nhật lần cuối bởi"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__write_date
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_element__write_date
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_tag__write_date
+#: model:ir.model.fields,field_description:marketing_card.field_card_card__write_date
+#: model:ir.model.fields,field_description:marketing_card.field_card_card_share__write_date
+#: model:ir.model.fields,field_description:marketing_card.field_card_template__write_date
+msgid "Last Updated on"
+msgstr "Cập nhật lần cuối vào"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__link_tracker_id
+msgid "Link Tracker"
+msgstr "Trình theo dõi Liên kết"
+
+#. module: marketing_card
+#: model:ir.model.fields.selection,name:marketing_card.selection__card_campaign_element__value_type__static
+msgid "Manual"
+msgstr "Thủ công"
+
+#. module: marketing_card
+#: model:ir.model,name:marketing_card.model_card_card
+#: model:ir.module.category,name:marketing_card.module_category_marketing_card
+#: model:ir.ui.menu,name:marketing_card.card_menu
+#: model:ir.ui.menu,name:marketing_card.marketing_card_menu_technical
+msgid "Marketing Card"
+msgstr "Thiệp marketing"
+
+#. module: marketing_card
+#: model:ir.model,name:marketing_card.model_card_campaign
+#: model:ir.model.fields,field_description:marketing_card.field_card_card_share__card_campaign_id
+msgid "Marketing Card Campaign"
+msgstr "Chiến dịch thiệp marketing"
+
+#. module: marketing_card
+#: model:ir.model,name:marketing_card.model_card_campaign_element
+msgid "Marketing Card Campaign Element"
+msgstr "Thành phần chiến dịch thiệp marketing"
+
+#. module: marketing_card
+#: model:ir.model,name:marketing_card.model_card_campaign_tag
+msgid "Marketing Card Campaign Tag"
+msgstr "Thẻ chiến dịch thiệp marketing"
+
+#. module: marketing_card
+#: model:res.groups,name:marketing_card.marketing_card_group_manager
+msgid "Marketing Card Manager"
+msgstr "Quản lý thiệp marketing"
+
+#. module: marketing_card
+#: model:ir.model,name:marketing_card.model_card_template
+msgid "Marketing Card Template"
+msgstr "Mẫu thiệp marketing"
+
+#. module: marketing_card
+#: model:res.groups,name:marketing_card.marketing_card_group_user
+msgid "Marketing Card User"
+msgstr "Người dùng thiệp marketing"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_card_share__message
+msgid "Message"
+msgstr "Nội dung"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__message_has_error
+msgid "Message Delivery error"
+msgstr "Lỗi gửi tin nhắn"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__message_ids
+msgid "Messages"
+msgstr "Tin nhắn"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__res_model
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_element__res_model
+#: model:ir.model.fields,field_description:marketing_card.field_card_card__res_model
+#: model:ir.model.fields,field_description:marketing_card.field_card_card_share__res_model
+msgid "Model Name"
+msgstr "Tên mô hình"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Hạn chót hoạt động của tôi"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_search
+msgid "My Campaigns"
+msgstr "Chiến dịch của tôi"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__name
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_tag__name
+#: model:ir.model.fields,field_description:marketing_card.field_card_template__name
+msgid "Name"
+msgstr "Tên"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "Sự kiện trên lịch cho hoạt động tiếp theo"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Hạn chót cho hoạt động tiếp theo"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__activity_summary
+msgid "Next Activity Summary"
+msgstr "Tóm tắt hoạt động tiếp theo"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__activity_type_id
+msgid "Next Activity Type"
+msgstr "Loại hoạt động tiếp theo"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Số lượng tác vụ"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__target_url_click_count
+msgid "Number of Clicks"
+msgstr "Số lượt nhấp"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__message_has_error_counter
+msgid "Number of errors"
+msgstr "Số lượng lỗi"
+
+#. module: marketing_card
+#: model:ir.model.fields,help:marketing_card.field_card_campaign__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Số tin nhắn cần xử lý"
+
+#. module: marketing_card
+#: model:ir.model.fields,help:marketing_card.field_card_campaign__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Số tin nhắn bị gửi lỗi"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_preview
+msgid "Odoo"
+msgstr "Odoo"
+
+#. module: marketing_card
+#: model:ir.model.fields,help:marketing_card.field_card_campaign__lang
+msgid ""
+"Optional translation language (ISO code) to select when sending out an "
+"email. If not set, the english version will be used. This should usually be "
+"a placeholder expression that provides the appropriate language, e.g. {{ "
+"object.partner_id.lang }}."
+msgstr ""
+"Ngôn ngữ dịch tuỳ chọn (mã ISO) để chọn khi gửi email. Nếu không đặt, phiên "
+"bản tiếng Anh sẽ được sử dụng. Đây luôn là biểu thức phần giữ chỗ cung cấp "
+"ngôn ngữ thích hợp, VD: {{ object.partner_id.lang }}."
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__post_suggestion
+msgid "Post Suggestion"
+msgstr "Nội dung"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_preview
+msgid "Powered By"
+msgstr "Cung cấp bởi"
+
+#. module: marketing_card
+#: model_terms:ir.actions.act_window,help:marketing_card.card_campaign_action
+msgid ""
+"Prepare a design and some content and let your community spread the word!"
+msgstr ""
+"Chuẩn bị sẵn thiết kế và nội dung rồi để cộng đồng của bạn lan toả thông "
+"tin!"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__preview_record_ref
+msgid "Preview Record"
+msgstr "Bản ghi xem trước"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__preview_record_url
+msgid "Preview Record Link"
+msgstr "Liên kết bản ghi xem trước"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
+msgid "Preview Target"
+msgstr "Mục tiêu xem trước"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_template__primary_color
+msgid "Primary Color"
+msgstr "Màu chính"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_template__primary_text_color
+msgid "Primary Text Color"
+msgstr "Màu văn bản chính"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.template_1
+#: model_terms:ir.ui.view,arch_db:marketing_card.template_2
+#: model_terms:ir.ui.view,arch_db:marketing_card.template_3
+#: model_terms:ir.ui.view,arch_db:marketing_card.template_4
+#: model_terms:ir.ui.view,arch_db:marketing_card.template_5
+msgid "Profile Picture"
+msgstr "Ảnh đại diện"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__rating_ids
+msgid "Ratings"
+msgstr "Đánh giá"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
+msgid "Recipients"
+msgstr "Người nhận"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_card__record_ref
+msgid "Record"
+msgstr "Bản ghi"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_card__res_id
+msgid "Record ID"
+msgstr "ID bản ghi"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_element__render_type
+msgid "Render Type"
+msgstr "Kiểu kết xuất"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__render_model
+msgid "Rendering Model"
+msgstr "Kết xuất mô hình"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__user_id
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_search
+msgid "Responsible"
+msgstr "Người phụ trách"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__activity_user_id
+msgid "Responsible User"
+msgstr "Người phụ trách"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__reward_target_url
+msgid "Reward Link"
+msgstr "Liên kết phần thưởng"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Lỗi gửi SMS"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_card_view_search
+msgid "Search Card"
+msgstr "Tìm kiếm thiệp"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_search
+msgid "Search Share Campaign"
+msgstr "Tìm kiếm chiến dịch chia sẻ"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_template__secondary_color
+msgid "Secondary Color"
+msgstr "Màu thứ 2"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_template__secondary_text_color
+msgid "Secondary Text Color"
+msgstr "Màu văn bản phụ"
+
+#. module: marketing_card
+#: model:ir.model.fields.selection,name:marketing_card.selection__card_campaign_element__card_element_role__section_1
+msgid "Section 1"
+msgstr "Phần 1"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
+msgid "Select a preview record..."
+msgstr "Chọn một bản ghi xem trước..."
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_preview
+msgid "Select where to share"
+msgstr "Chọn nơi để chia sẻ"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
+msgid "Send"
+msgstr "Gửi"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_card_share_view_form
+msgid "Send & Close"
+msgstr "Gửi & đóng"
+
+#. module: marketing_card
+#. odoo-python
+#: code:addons/marketing_card/models/card_campaign.py:0
+msgid "Send Cards"
+msgstr "Gửi thiệp"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
+msgid "Share Campaign"
+msgstr "Chiến dịch chia sẻ"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_element_view_form
+msgid "Share Campaign Render Element"
+msgstr "Thành phần kết xuất chiến dịch chia sẻ"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_card_view_list
+msgid "Share Card"
+msgstr "Chia sẻ thiệp"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_card_share_view_form
+msgid "Share Cards"
+msgstr "Chia sẻ thiệp"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
+msgid "Share Reward"
+msgstr ""
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_card__share_status
+msgid "Share Status"
+msgstr "Chia sẻ trạng thái"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_template_view_form
+msgid "Share Template"
+msgstr "Mẫu chia sẻ"
+
+#. module: marketing_card
+#: model:ir.model.fields.selection,name:marketing_card.selection__card_card__share_status__visited
+msgid "Share URL Visited"
+msgstr "Chia sẻ URL đã được truy cập"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_preview
+msgid "Share this design with your community!"
+msgstr "Chia sẻ thiết kế này với cộng đồng của bạn!"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_card_view_search
+msgid "Shared"
+msgstr "Đã chia sẻ"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__target_url
+msgid "Shared Link"
+msgstr "Liên kết đã chia sẻ"
+
+#. module: marketing_card
+#: model:ir.model.fields.selection,name:marketing_card.selection__card_card__share_status__shared
+msgid "Shared on Social Networks"
+msgstr "Đã chia sẻ trên mạng xã hội"
+
+#. module: marketing_card
+#: model:ir.model.fields,help:marketing_card.field_card_campaign__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Trạng thái dựa trên hoạt động\n"
+"Quá hạn: Hạn chót hạn đã qua\n"
+"Hôm nay: Hôm nay là ngày phải thực hiện\n"
+"Kế hoạch: Cần thực hiện trong tương lai."
+
+#. module: marketing_card
+#: model:ir.model.fields.selection,name:marketing_card.selection__card_campaign_element__card_element_role__subheader
+msgid "Sub-Header"
+msgstr "Header phụ"
+
+#. module: marketing_card
+#: model:ir.model.fields.selection,name:marketing_card.selection__card_campaign_element__card_element_role__subsection_1
+msgid "Sub-Section 1"
+msgstr "Tiểu mục 1"
+
+#. module: marketing_card
+#: model:ir.model.fields.selection,name:marketing_card.selection__card_campaign_element__card_element_role__subsection_2
+msgid "Sub-Section 2"
+msgstr "Tiểu mục 2"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_card_share__subject
+msgid "Subject"
+msgstr "Tiêu đề"
+
+#. module: marketing_card
+#. odoo-python
+#: code:addons/marketing_card/models/card_campaign.py:0
+msgid "Subtitle"
+msgstr "Phụ đề"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__tag_ids
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_search
+msgid "Tags"
+msgstr "Thẻ"
+
+#. module: marketing_card
+#: model:ir.model.constraint,message:marketing_card.constraint_card_campaign_tag_name_uniq
+msgid "Tags may not reuse existing names."
+msgstr "Thẻ không được sử dụng lại tên hiện có."
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_tree
+msgid "Target"
+msgstr "Mục tiêu"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_element__card_element_text_value
+msgid "Text"
+msgstr "Văn bản"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_element__text_color
+msgid "Text Color"
+msgstr "Màu chữ"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
+msgid "Thanks for sharing, here is your reward!"
+msgstr "Cảm ơn bạn đã chia sẻ! Đây là phần thưởng dành cho bạn."
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__reward_message
+msgid "Thanks to You Message"
+msgstr "Thông điệp cảm ơn"
+
+#. module: marketing_card
+#. odoo-python
+#: code:addons/marketing_card/models/utm_source.py:0
+msgid ""
+"The UTM source '%s' cannot be deleted as it is used to promote marketing "
+"cards campaigns."
+msgstr ""
+"Không thể xóa nguồn UTM '%s' vì nó được sử dụng để quảng bá chiến dịch thiệp"
+" marketing."
+
+#. module: marketing_card
+#. odoo-python
+#: code:addons/marketing_card/models/card_campaign.py:0
+msgid "Title"
+msgstr "Tiêu đề"
+
+#. module: marketing_card
+#: model:ir.model.fields,help:marketing_card.field_card_campaign__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Loại hoạt động ngoại lệ trong bản ghi."
+
+#. module: marketing_card
+#: model:ir.model,name:marketing_card.model_utm_source
+msgid "UTM Source"
+msgstr "Nguồn UTM"
+
+#. module: marketing_card
+#: model:ir.model.fields.selection,name:marketing_card.selection__card_campaign_element__render_type__text
+msgid "User Text"
+msgstr "Văn bản của người dùng"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.robots
+msgid ""
+"User-agent: *\n"
+"                Allow: /cards/"
+msgstr ""
+"User-agent: *\n"
+"                Allow: /cards/"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign_element__value_type
+msgid "Value Type"
+msgstr "Loại giá trị"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_card_view_search
+msgid "Visited"
+msgstr "Đã truy cập"
+
+#. module: marketing_card
+#: model:ir.model.fields,field_description:marketing_card.field_card_campaign__website_message_ids
+msgid "Website Messages"
+msgstr "Thông báo trên trang web"
+
+#. module: marketing_card
+#: model:ir.model.fields,help:marketing_card.field_card_campaign__website_message_ids
+msgid "Website communication history"
+msgstr "Lịch sử trao đổi qua trang web"
+
+#. module: marketing_card
+#. odoo-python
+#: code:addons/marketing_card/wizards/card_card_share.py:0
+msgid "Your Card"
+msgstr "Thiệp của bạn"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
+msgid "Your Home Page"
+msgstr "Trang chủ của bạn"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.template_1
+#: model_terms:ir.ui.view,arch_db:marketing_card.template_2
+#: model_terms:ir.ui.view,arch_db:marketing_card.template_3
+#: model_terms:ir.ui.view,arch_db:marketing_card.template_4
+#: model_terms:ir.ui.view,arch_db:marketing_card.template_5
+msgid "button text"
+msgstr "văn bản nút"
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
+msgid "e.g. \"https://www.mycompany.com/reward\""
+msgstr "VD: \"https://www.mycompany.com/reward\""
+
+#. module: marketing_card
+#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
+msgid "e.g. Odoo Experience Talks"
+msgstr "VD: Bài talk tại Odoo Experience"
+
+#. module: marketing_card
+#. odoo-python
+#: code:addons/marketing_card/models/card_campaign_element.py:0
+msgid "field path must be set on %(element_role)s"
+msgstr "đường dẫn trường phải được thiết lập trên %(element_role)s"
