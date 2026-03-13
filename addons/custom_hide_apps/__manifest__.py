@@ -8,4 +8,5 @@
     'data': [],
     'installable': True,
     'auto_install': True,
+    'license': 'LGPL-3',
 }
