@@ -93,10 +93,10 @@
                         <div class="o_wslides_join_course_widget float-end"/>
                     </div>
                 </div>
-                <span t-if="widget.publicUser &amp;&amp; widget.channel.signupAllowed" class="d-block mt-2">
+                <!-- <span t-if="widget.publicUser &amp;&amp; widget.channel.signupAllowed" class="d-block mt-2">
                     <span>Don't have an account?</span>
                     <a class="fw-bold" t-att-href="'/web/signup?redirect=' + widget.redirectURL">Sign Up!</a>
-                </span>
+                </span> -->
             </div>
             <div t-else="" class="d-md-flex align-items-center justify-content-between">
                 <div t-att-class="'d-flex align-items-center' + (widget.slide.completed ? ' alert alert-success my-0 py-1 px-3' : '')">
