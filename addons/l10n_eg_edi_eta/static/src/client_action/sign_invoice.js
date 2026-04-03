@@ -23,56 +23,58 @@ async function actionGetDrive(env, action, type) {
     let result = {};
 
     // ------------------------------------------------------------------
-    // NEW CODE: Handle bulk invoices sequentially to prevent token timeout
+    // NEW FIX: Sign and immediately upload to Odoo one by one
     // ------------------------------------------------------------------
     if (type === "sign" && action.params.invoices) {
-        let signedInvoices = {};
-        let hasError = false;
-        let lastError = null;
-        
         const invoiceIds = Object.keys(action.params.invoices);
+        let successCount = 0;
         
         // Loop through each invoice one by one
         for (let i = 0; i < invoiceIds.length; i++) {
             const invId = invoiceIds[i];
+            console.log(`⏳ Processing invoice ${i + 1} of ${invoiceIds.length}...`);
             
-            // Create a payload with just ONE invoice
             const singlePayload = {
                 ...action.params,
                 invoices: { [invId]: action.params.invoices[invId] }
             };
             
             try {
-                // Send single invoice to the local middleware
+                // 1. Get the signature from the USB Token locally
                 let chunkResult = await http.post(route, singlePayload);
                 
-                if (chunkResult.error) {
-                    lastError = chunkResult.error;
-                    hasError = true;
-                } else if (chunkResult[key]) {
-                    // Collect the successfully signed invoice
-                    Object.assign(signedInvoices, chunkResult[key]);
+                if (chunkResult[key]) {
+                    console.log(`✅ Signature successful! Pushing to Odoo server immediately...`);
+                    
+                    // 2. THE FIX: Upload this single invoice to Odoo right now!
+                    await orm.call("l10n_eg_edi.thumb.drive", method, [[drive_id], chunkResult[key]]);
+                    
+                    successCount++;
+                    console.log(`🚀 Invoice ${i + 1} is safely in Odoo and ready for ETA!`);
+                } else if (chunkResult.error) {
+                    console.error(`❌ Token error on invoice ${i + 1}:`, chunkResult.error);
                 }
                 
-                // THE FIX: Wait 2 seconds before asking the token to sign the next one
+                // 3. Pause for 2 seconds to let the USB token breathe
                 await new Promise(resolve => setTimeout(resolve, 2000));
                 
             } catch (e) {
-                dialog.add(AlertDialog, { body: _t("Connection to middleware lost during bulk sign.") });
-                return;
+                console.error("Connection lost during loop", e);
             }
         }
         
-        // After the loop, if we successfully signed any, prepare the final result
-        if (Object.keys(signedInvoices).length > 0) {
-            result[key] = signedInvoices;
-        } else if (hasError) {
-            result = { error: lastError };
-        }
+        console.log(`🎉 Finished! Successfully pushed ${successCount} out of ${invoiceIds.length} invoices to Odoo.`);
+        
+        // Reload the page at the very end to show the updated "Sent" statuses
+        actionService.doAction({
+            type: "ir.actions.client",
+            tag: "reload",
+        });
+        return;
         
     } else {
         // ------------------------------------------------------------------
-        // ORIGINAL CODE: For certificate retrieval or if something is missing
+        // ORIGINAL CODE: For fetching the initial certificate
         // ------------------------------------------------------------------
         try {
             result = await http.post(route, action.params);
@@ -82,42 +84,13 @@ async function actionGetDrive(env, action, type) {
             });
             return;
         }
-    }
-
-    // Process the final results and save to Odoo database
-    if (result.error) {
-        const typeToErrorMessage = {
-            no_pykcs11: _t(
-                "Missing library - Please make sure that PyKCS11 is correctly installed on the local proxy server"
-            ),
-            missing_dll: _t(
-                "Missing Dependency - If you are using Windows, make sure eps2003csp11.dll is correctly installed. You can download it here: https://www.egypttrust.com/en/downloads/other-drivers. If you are using Linux or macOS, please install OpenSC"
-            ),
-            no_drive: _t("No drive found - Make sure the thumb drive is correctly inserted"),
-            multiple_drive: _t(
-                "Multiple drive detected - Only one secure thumb drive can be inserted at the same time"
-            ),
-            system_unsupported: _t("System not supported"),
-            unauthorized: _t("Unauthorized"),
-        };
-        dialog.add(AlertDialog, {
-            body: typeToErrorMessage[result.error] || _t("Unexpected error: “%s”", result.error),
-        });
-    } else if (result[key]) {
-        // Send all signed documents to the Odoo server in one quick request
-        await orm.call("l10n_eg_edi.thumb.drive", method, [[drive_id], result[key]]).catch(() => {
-            dialog.add(AlertDialog, {
-                body: _t("Error trying to connect to Odoo. Check your internet connection"),
-            });
-        });
-        actionService.doAction({
-            type: "ir.actions.client",
-            tag: "reload",
-        });
-    } else {
-        dialog.add(AlertDialog, {
-            body: _t("An unexpected error has occurred"),
-        });
+        
+        if (result.error) {
+            dialog.add(AlertDialog, { body: _t("Unexpected error: “%s”", result.error) });
+        } else if (result[key]) {
+            await orm.call("l10n_eg_edi.thumb.drive", method, [[drive_id], result[key]]);
+            actionService.doAction({ type: "ir.actions.client", tag: "reload" });
+        }
     }
 }
 
