@@ -36,12 +36,12 @@ async function actionGetDrive(env, action, type) {
         const invoiceIds = Object.keys(parsedInvoices);
         let successCount = 0;
         
-        console.log(`📦 Found ${invoiceIds.length} actual invoices to process.`);
+        console.log(` Found ${invoiceIds.length} actual invoices to process.`);
         
         // Loop through each invoice one by one
         for (let i = 0; i < invoiceIds.length; i++) {
             const invId = invoiceIds[i];
-            console.log(`⏳ Processing invoice ${i + 1} of ${invoiceIds.length}...`);
+            console.log(` Processing invoice ${i + 1} of ${invoiceIds.length}...`);
             
             // Create an object with just THIS ONE invoice
             const singleInvoiceData = { [invId]: parsedInvoices[invId] };
@@ -56,15 +56,15 @@ async function actionGetDrive(env, action, type) {
                 let chunkResult = await http.post(route, singlePayload);
                 
                 if (chunkResult[key]) {
-                    console.log(`✅ Signature successful! Pushing to Odoo server immediately...`);
+                    console.log(` Signature successful! Pushing to Odoo server immediately...`);
                     
                     // Upload this single invoice to Odoo right now!
                     await orm.call("l10n_eg_edi.thumb.drive", method, [[drive_id], chunkResult[key]]);
                     
                     successCount++;
-                    console.log(`🚀 Invoice ${i + 1} is safely in Odoo!`);
+                    console.log(` Invoice ${i + 1} is safely in Odoo!`);
                 } else if (chunkResult.error) {
-                    console.error(`❌ Token error on invoice ${i + 1}:`, chunkResult.error);
+                    console.error(` Token error on invoice ${i + 1}:`, chunkResult.error);
                 }
                 
                 // Pause for 2 seconds to let the USB token breathe
@@ -75,7 +75,7 @@ async function actionGetDrive(env, action, type) {
             }
         }
         
-        console.log(`🎉 Finished! Successfully pushed ${successCount} out of ${invoiceIds.length} invoices.`);
+        console.log(`x Finished! Successfully pushed ${successCount} out of ${invoiceIds.length} invoices.`);
         
         actionService.doAction({
             type: "ir.actions.client",
