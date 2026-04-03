@@ -23,39 +23,51 @@ async function actionGetDrive(env, action, type) {
     let result = {};
 
     // ------------------------------------------------------------------
-    // NEW FIX: Sign and immediately upload to Odoo one by one
+    // FIXED CODE: Parse the Odoo string into actual invoices first!
     // ------------------------------------------------------------------
     if (type === "sign" && action.params.invoices) {
-        const invoiceIds = Object.keys(action.params.invoices);
+        
+        // 1. Convert Odoo's giant text string into a real JavaScript object
+        const parsedInvoices = typeof action.params.invoices === "string" 
+            ? JSON.parse(action.params.invoices) 
+            : action.params.invoices;
+            
+        // Now this will correctly count the actual invoices (e.g., 2), not characters!
+        const invoiceIds = Object.keys(parsedInvoices);
         let successCount = 0;
+        
+        console.log(`📦 Found ${invoiceIds.length} actual invoices to process.`);
         
         // Loop through each invoice one by one
         for (let i = 0; i < invoiceIds.length; i++) {
             const invId = invoiceIds[i];
             console.log(`⏳ Processing invoice ${i + 1} of ${invoiceIds.length}...`);
             
+            // Create an object with just THIS ONE invoice
+            const singleInvoiceData = { [invId]: parsedInvoices[invId] };
+            
             const singlePayload = {
                 ...action.params,
-                invoices: { [invId]: action.params.invoices[invId] }
+                // Convert it BACK to a string so the USB Token can understand it
+                invoices: JSON.stringify(singleInvoiceData)
             };
             
             try {
-                // 1. Get the signature from the USB Token locally
                 let chunkResult = await http.post(route, singlePayload);
                 
                 if (chunkResult[key]) {
                     console.log(`✅ Signature successful! Pushing to Odoo server immediately...`);
                     
-                    // 2. THE FIX: Upload this single invoice to Odoo right now!
+                    // Upload this single invoice to Odoo right now!
                     await orm.call("l10n_eg_edi.thumb.drive", method, [[drive_id], chunkResult[key]]);
                     
                     successCount++;
-                    console.log(`🚀 Invoice ${i + 1} is safely in Odoo and ready for ETA!`);
+                    console.log(`🚀 Invoice ${i + 1} is safely in Odoo!`);
                 } else if (chunkResult.error) {
                     console.error(`❌ Token error on invoice ${i + 1}:`, chunkResult.error);
                 }
                 
-                // 3. Pause for 2 seconds to let the USB token breathe
+                // Pause for 2 seconds to let the USB token breathe
                 await new Promise(resolve => setTimeout(resolve, 2000));
                 
             } catch (e) {
@@ -63,9 +75,8 @@ async function actionGetDrive(env, action, type) {
             }
         }
         
-        console.log(`🎉 Finished! Successfully pushed ${successCount} out of ${invoiceIds.length} invoices to Odoo.`);
+        console.log(`🎉 Finished! Successfully pushed ${successCount} out of ${invoiceIds.length} invoices.`);
         
-        // Reload the page at the very end to show the updated "Sent" statuses
         actionService.doAction({
             type: "ir.actions.client",
             tag: "reload",
@@ -74,7 +85,7 @@ async function actionGetDrive(env, action, type) {
         
     } else {
         // ------------------------------------------------------------------
-        // ORIGINAL CODE: For fetching the initial certificate
+        // ORIGINAL CODE
         // ------------------------------------------------------------------
         try {
             result = await http.post(route, action.params);
