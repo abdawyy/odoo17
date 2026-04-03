@@ -20,16 +20,71 @@ async function actionGetDrive(env, action, type) {
         key = "invoices";
     }
 
-    let result;
-    try {
-        result = await http.post(route, action.params);
-    } catch {
-        dialog.add(AlertDialog, {
-            body: _t("Error trying to connect to the middleware. Is the middleware running?"),
-        });
-        return;
+    let result = {};
+
+    // ------------------------------------------------------------------
+    // NEW CODE: Handle bulk invoices sequentially to prevent token timeout
+    // ------------------------------------------------------------------
+    if (type === "sign" && action.params.invoices) {
+        let signedInvoices = {};
+        let hasError = false;
+        let lastError = null;
+        
+        const invoiceIds = Object.keys(action.params.invoices);
+        
+        // Loop through each invoice one by one
+        for (let i = 0; i < invoiceIds.length; i++) {
+            const invId = invoiceIds[i];
+            
+            // Create a payload with just ONE invoice
+            const singlePayload = {
+                ...action.params,
+                invoices: { [invId]: action.params.invoices[invId] }
+            };
+            
+            try {
+                // Send single invoice to the local middleware
+                let chunkResult = await http.post(route, singlePayload);
+                
+                if (chunkResult.error) {
+                    lastError = chunkResult.error;
+                    hasError = true;
+                } else if (chunkResult[key]) {
+                    // Collect the successfully signed invoice
+                    Object.assign(signedInvoices, chunkResult[key]);
+                }
+                
+                // THE FIX: Wait 2 seconds before asking the token to sign the next one
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+            } catch (e) {
+                dialog.add(AlertDialog, { body: _t("Connection to middleware lost during bulk sign.") });
+                return;
+            }
+        }
+        
+        // After the loop, if we successfully signed any, prepare the final result
+        if (Object.keys(signedInvoices).length > 0) {
+            result[key] = signedInvoices;
+        } else if (hasError) {
+            result = { error: lastError };
+        }
+        
+    } else {
+        // ------------------------------------------------------------------
+        // ORIGINAL CODE: For certificate retrieval or if something is missing
+        // ------------------------------------------------------------------
+        try {
+            result = await http.post(route, action.params);
+        } catch {
+            dialog.add(AlertDialog, {
+                body: _t("Error trying to connect to the middleware. Is the middleware running?"),
+            });
+            return;
+        }
     }
 
+    // Process the final results and save to Odoo database
     if (result.error) {
         const typeToErrorMessage = {
             no_pykcs11: _t(
@@ -49,6 +104,7 @@ async function actionGetDrive(env, action, type) {
             body: typeToErrorMessage[result.error] || _t("Unexpected error: “%s”", result.error),
         });
     } else if (result[key]) {
+        // Send all signed documents to the Odoo server in one quick request
         await orm.call("l10n_eg_edi.thumb.drive", method, [[drive_id], result[key]]).catch(() => {
             dialog.add(AlertDialog, {
                 body: _t("Error trying to connect to Odoo. Check your internet connection"),
