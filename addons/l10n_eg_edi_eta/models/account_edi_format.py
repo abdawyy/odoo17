@@ -9,8 +9,8 @@ from werkzeug.urls import url_quote
 from base64 import b64encode
 from odoo.addons.account.tools import LegacyHTTPAdapter
 from json.decoder import JSONDecodeError
-
-from odoo import api, models, _
+from datetime import timedelta
+from odoo import api, fields,models, _
 from odoo.tools.float_utils import json_float_round
 
 _logger = logging.getLogger(__name__)
@@ -218,7 +218,7 @@ class AccountEdiFormat(models.Model):
             tax = tax_values['tax_repartition_line'].tax_id
             return {'l10n_eg_eta_code': tax.l10n_eg_eta_code.split('_')[0]}
 
-        date_string = invoice.invoice_date.strftime('%Y-%m-%dT%H:%M:%SZ')
+        date_string = date_string = (fields.Datetime.now() - timedelta(hours=1)).strftime('%Y-%m-%dT%H:%M:%SZ')
         grouped_taxes = invoice._prepare_edi_tax_details(grouping_key_generator=group_tax_retention)
         invoice_line_data, totals = self._l10n_eg_eta_prepare_invoice_lines_data(invoice, grouped_taxes['tax_details_per_record'])
         eta_invoice = {
