@@ -3,6 +3,7 @@
 import { AlertDialog } from "@web/core/confirmation_dialog/confirmation_dialog";
 import { registry } from "@web/core/registry";
 import { _t } from "@web/core/l10n/translation";
+import { markup } from "@odoo/owl"; // <-- IMPORTANT: Needed to render line breaks in the dialog
 
 async function actionGetDrive(env, action, type) {
     const { drive_id, sign_host: host } = action.params;
@@ -23,33 +24,26 @@ async function actionGetDrive(env, action, type) {
     let result = {};
 
     // ------------------------------------------------------------------
-    // FIXED CODE: Parse the Odoo string into actual invoices first!
+    // FIXED CODE: Processing Invoices
     // ------------------------------------------------------------------
     if (type === "sign" && action.params.invoices) {
         
-        // 1. Convert Odoo's giant text string into a real JavaScript object
         const parsedInvoices = typeof action.params.invoices === "string" 
             ? JSON.parse(action.params.invoices) 
             : action.params.invoices;
             
-        // Now this will correctly count the actual invoices (e.g., 2), not characters!
         const invoiceIds = Object.keys(parsedInvoices);
         let successCount = 0;
-        let failedInvoices = [];  // Track failed invoices with error details
+        let failedInvoices = []; 
         
-        console.log(` Found ${invoiceIds.length} actual invoices to process.`);
+        console.log(`Found ${invoiceIds.length} actual invoices to process.`);
         
-        // Loop through each invoice one by one
         for (let i = 0; i < invoiceIds.length; i++) {
             const invId = invoiceIds[i];
-            console.log(` Processing invoice ${i + 1} of ${invoiceIds.length}...`);
-            
-            // Create an object with just THIS ONE invoice
             const singleInvoiceData = { [invId]: parsedInvoices[invId] };
             
             const singlePayload = {
                 ...action.params,
-                // Convert it BACK to a string so the USB Token can understand it
                 invoices: JSON.stringify(singleInvoiceData)
             };
             
@@ -57,56 +51,59 @@ async function actionGetDrive(env, action, type) {
                 let chunkResult = await http.post(route, singlePayload);
                 
                 if (chunkResult[key]) {
-                    console.log(` Signature successful! Pushing to Odoo server immediately...`);
-                    
-                    // Upload this single invoice to Odoo right now!
+                    // Success! Push to server
                     await orm.call("l10n_eg_edi.thumb.drive", method, [[drive_id], chunkResult[key]]);
-                    
                     successCount++;
-                    console.log(` Invoice ${i + 1} is safely in Odoo!`);
                 } else if (chunkResult.error) {
-                    console.error(` Token error on invoice ${i + 1}:`, chunkResult.error);
+                    console.error(`Token error on invoice ${invId}:`, chunkResult.error);
                     failedInvoices.push({
                         id: invId,
                         error: chunkResult.error
                     });
+                    
+                    // NEW: If the USB token is completely missing or the PIN is wrong, 
+                    // abort the loop completely! Don't keep trying and making the user wait.
+                    const errStr = chunkResult.error.toLowerCase();
+                    if (errStr.includes("token") || errStr.includes("pin") || errStr.includes("found")) {
+                        break; 
+                    }
                 }
                 
                 // Pause for 2 seconds to let the USB token breathe
                 await new Promise(resolve => setTimeout(resolve, 2000));
                 
             } catch (e) {
-                console.error("Connection lost during loop", e);
-                failedInvoices.push({
-                    id: invId,
-                    error: e.message || "Connection lost during signing"
+                // NEW: This catches when the Middleware is fully CLOSED or crashed.
+                // Stop the loop instantly and show the error!
+                await dialog.add(AlertDialog, {
+                    body: _t("Error trying to connect to the middleware. Is the middleware running?"),
                 });
+                return; // Exit the entire function
             }
         }
         
-        console.log(`x Finished! Successfully pushed ${successCount} out of ${invoiceIds.length} invoices.`);
-        
-        // Build error details message
+        // Build error details message using HTML <br/> so Odoo renders it correctly
         let errorDetails = "";
         if (failedInvoices.length > 0) {
-            errorDetails = "\n\nFailed invoices:\n";
+            errorDetails = "<br/><br/><b>" + _t("Failed Invoices:") + "</b><br/>";
             failedInvoices.forEach(failed => {
-                errorDetails += `- Invoice ${failed.id}: ${failed.error}\n`;
+                errorDetails += `- Invoice ID ${failed.id}: ${failed.error}<br/>`;
             });
         }
         
-        // Show success/failure message to user
+        // Build the message body safely without relying on %s interpolation
         let messageBody = "";
-        if (successCount === invoiceIds.length) {
-            messageBody = _t("Success! All %s invoices have been signed and uploaded successfully.", invoiceIds.length);
+        if (successCount === invoiceIds.length && invoiceIds.length > 0) {
+            messageBody = _t("Success! All invoices have been signed and uploaded successfully.");
         } else if (successCount > 0) {
-            messageBody = _t("Partial success: %s out of %s invoices have been signed and uploaded successfully.", successCount, invoiceIds.length) + errorDetails;
+            messageBody = _t("Partial success: Some invoices were successfully signed, but others failed.") + errorDetails;
         } else {
-            messageBody = _t("Failed: None of the invoices could be signed. Please check the middleware and try again.") + errorDetails;
+            messageBody = _t("Failed: No invoices could be signed. Please check your USB token and middleware.") + errorDetails;
         }
         
+        // Use markup() so the <br/> and <b> tags actually work visually in Odoo 17
         await dialog.add(AlertDialog, {
-            body: messageBody,
+            body: markup(messageBody),
             confirmLabel: _t("OK"),
         });
         
@@ -118,7 +115,7 @@ async function actionGetDrive(env, action, type) {
         
     } else {
         // ------------------------------------------------------------------
-        // ORIGINAL CODE
+        // ORIGINAL CODE (For Certificate setup)
         // ------------------------------------------------------------------
         try {
             result = await http.post(route, action.params);
@@ -130,7 +127,7 @@ async function actionGetDrive(env, action, type) {
         }
         
         if (result.error) {
-            dialog.add(AlertDialog, { body: _t("Unexpected error: “%s”", result.error) });
+            dialog.add(AlertDialog, { body: _t("Unexpected error: ") + result.error });
         } else if (result[key]) {
             await orm.call("l10n_eg_edi.thumb.drive", method, [[drive_id], result[key]]);
             await dialog.add(AlertDialog, {
