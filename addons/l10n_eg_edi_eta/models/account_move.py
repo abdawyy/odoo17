@@ -69,7 +69,6 @@ class AccountMove(models.Model):
         return super().button_draft()
 
     def action_post_sign_invoices(self):
-        raise UserError(_("YES! The button is connected to this file!"))
         # only sign invoices that are confirmed and not yet sent to the ETA.
         invoices = self.filtered(lambda r: r.country_code == 'EG' and r.state == 'posted' and not r.l10n_eg_submission_number and r.edi_document_ids.filtered(lambda e: e.edi_format_id.code == 'eg_eta'))
         if not invoices:
