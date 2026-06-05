@@ -72,7 +72,7 @@ class AccountMove(models.Model):
         # only sign invoices that are confirmed and not yet sent to the ETA.
         invoices = self.filtered(lambda r: r.country_code == 'EG' and r.state == 'posted' and not r.l10n_eg_submission_number and r.edi_document_ids.filtered(lambda e: e.edi_format_id.code == 'eg_eta'))
         if not invoices:
-            return
+            raise UserError(_("No valid invoices to sign! Please ensure the selected invoices are 'Posted', belong to Egypt, and haven't been submitted yet. Draft invoices cannot be signed."))
 
         company_ids = invoices.mapped('company_id')
         # since the middleware accepts only one drive at a time, we have to limit signing to one company at a time
