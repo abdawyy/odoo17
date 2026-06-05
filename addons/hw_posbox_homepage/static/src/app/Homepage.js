@@ -140,8 +140,8 @@ export class Homepage extends Component {
             <hr class="mt-5" />
             <FooterButtons />
             <div class="d-flex justify-content-center gap-2 mt-2">
-                <a href="https://www.odoo.com/fr_FR/help" target="_blank" class="link-primary">Help</a>
-                <a href="https://www.odoo.com/documentation/master/applications/general/iot.html" target="_blank" class="link-primary">Documentation</a>
+                <a href="#" class="link-primary">Help</a>
+                <a href="#" class="link-primary">Documentation</a>
             </div>
         </div>
     </div>

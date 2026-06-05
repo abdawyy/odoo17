@@ -10,8 +10,7 @@
 
 <t t-name="web_unsplash.UnsplashCredentials">
     <div class="d-flex align-items-center flex-wrap">
-        <a href="https://www.odoo.com/documentation/master/applications/websites/website/optimize/unsplash.html#generate-an-unsplash-access-key"
-           class="me-1" target="_blank">Get an Access key</a>
+        <a href="#" class="me-1">Get an Access key</a>
         and paste it here:
         <input type="text"
             class="o_input o_required_modifier form-control w-auto mx-2"
@@ -21,8 +20,7 @@
             t-on-input="() => this.state.hasKeyError = false"
             t-att-class="{ 'is-invalid': state.hasKeyError }"/>
         and paste
-        <a href="https://www.odoo.com/documentation/master/applications/websites/website/optimize/unsplash.html#generate-an-unsplash-application-id"
-           class="mx-1" target="_blank">Application ID</a>
+        <a href="#" class="mx-1">Application ID</a>
         here:
         <input type="text"
             class="o_input o_required_modifier form-control w-auto ms-2"

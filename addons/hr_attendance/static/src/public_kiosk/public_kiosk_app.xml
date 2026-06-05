@@ -82,9 +82,7 @@
             </t>
         </div>
     </div>
-    <div class="o_hr_kiosk_mode_bottom my-5 mx-auto">
-        Powered by <img t-att-height="env.isSmall ? 21 : 32" src="/web/static/img/logo.png" alt="Odoo Logo"/>
-    </div>
+    <div class="o_hr_kiosk_mode_bottom my-5 mx-auto"></div>
 </t>
 
 <t t-name="hr_attendance.NoBadgeEmployeeScreen">
@@ -145,14 +143,9 @@
                         <i class="fa fa-user-o me-2"/>
                         <span >Identify Manually</span>
                     </button>
-                    <span>
-                        Powered by <img height="32" src="/web/static/img/logo.png" alt="Odoo Logo"/>
-                    </span>
                 </t>
                 <t t-else="">
-                    <div class="o_hr_kiosk_mode_bottom mx-auto">
-                        Powered by <img height="32" src="/web/static/img/logo.png" alt="Odoo Logo"/>
-                    </div>
+                    <div class="o_hr_kiosk_mode_bottom mx-auto"></div>
                 </t>
             </div>
         </t>

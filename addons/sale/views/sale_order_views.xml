@@ -947,8 +947,7 @@
             <a
                 role="button"
                 class="btn btn-secondary"
-                href="https://www.odoo.com/documentation/master/_downloads/56a93429515b36105d952e1d2b802f9e/sample_quotation.pdf"
-                target="_blank"
+                href="#"
             >
                 Check a sample. It's clean!
             </a>
@@ -984,8 +983,7 @@
             <a
                 role="button"
                 class="btn btn-secondary"
-                href="https://www.odoo.com/documentation/master/_downloads/56a93429515b36105d952e1d2b802f9e/sample_quotation.pdf"
-                target="_blank"
+                href="#"
             >
                 Check a sample. It's clean!
             </a>

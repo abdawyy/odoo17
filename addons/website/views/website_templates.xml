@@ -2330,10 +2330,10 @@
         <div class="oe_structure">
             <section class="container">
                 <h1><t t-esc="res_company.name"/>
-                    <small groups='base.group_no_one'>Odoo Version <t t-out="version.get('server_version')"/></small>
+                    <small groups='base.group_no_one'>Version <t t-out="version.get('server_version')"/></small>
                 </h1>
                 <p>
-                    Information about the <t t-esc="res_company.name"/> instance of Odoo, the <a target="_blank" href="https://www.odoo.com">Open Source ERP</a>.
+                    Information about the <t t-esc="res_company.name"/> instance of the Open Source ERP.
                 </p>
 
                 <div class="alert alert-warning alert-dismissable mt16" groups="website.group_website_restricted_editor" role="status">
@@ -2361,7 +2361,7 @@
                     <h2 class='mt32'>Installed Localizations / Account Charts</h2>
                     <dl class="dl-horizontal" t-foreach="l10n" t-as="app">
                         <dt>
-                            <a t-att-href="app.website or 'https://www.odoo.com/app/accounting/' + app.name">
+                            <a t-att-href="app.website or '#'">
                                 <t t-out="app.shortdesc"/>
                             </a>
                         </dt>

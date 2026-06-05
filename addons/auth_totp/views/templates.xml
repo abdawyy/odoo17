@@ -9,8 +9,7 @@
                     <div class="mb-2 mt-2 text-muted">
                         To login, enter below the six-digit authentication code provided by your Authenticator app.
                         <br/>
-                        <a href="https://www.odoo.com/documentation/master/applications/general/auth/2fa.html"
-                           title="Learn More" target="_blank">Learn More</a>
+                        <span title="Learn More">Learn More</span>
                     </div>
                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                     <input type="hidden" name="redirect" t-att-value="redirect"/>

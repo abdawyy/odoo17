@@ -278,10 +278,6 @@
                                         <t t-set="qr_code_url" t-value="o._generate_qr_code(silent_errors=True)"/>
                                         <p t-if="qr_code_url" class="position-relative mb-0">
                                             <img t-att-src="qr_code_url"/>
-                                            <img src="/account/static/src/img/Odoo_logo_O.svg"
-                                                 id="qrcode_odoo_logo"
-                                                 class="top-50 start-50 position-absolute bg-white border border-white border-3 rounded-circle"
-                                            />
                                         </p>
                                     </div>
                                     <div class="d-inline text-muted lh-sm fst-italic" id="qrcode_info" t-if="qr_code_url">

@@ -11,12 +11,8 @@
     text-justify:inter-word;
 }
 
-#qrcode_odoo_logo {
-    -webkit-transform:translate(-50%,-50%);
-    height:18%;
-    width:18%;
-}
-
 .tax_computation_company_currency {
+    margin-bottom: 5px;
+}
     margin-bottom: 5px;
 }
