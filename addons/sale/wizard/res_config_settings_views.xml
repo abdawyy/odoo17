@@ -108,39 +108,39 @@
                         </setting>
                         <setting id="ups" help="Compute shipping costs and ship with UPS"
                                  documentation="/applications/inventory_and_mrp/inventory/shipping/setup/third_party_shipper.html">
-                            <field name="module_delivery_ups" widget="upgrade_boolean"/>
+                            <field name="module_delivery_ups"/>
                         </setting>
                         <setting id="shipping_costs_dhl" help="Compute shipping costs and ship with DHL"
                                  documentation="/applications/inventory_and_mrp/inventory/shipping/setup/third_party_shipper.html">
-                            <field name="module_delivery_dhl" widget="upgrade_boolean"/>
+                            <field name="module_delivery_dhl"/>
                         </setting>
                         <setting id="shipping_costs_fedex" help="Compute shipping costs and ship with FedEx"
                                  documentation="/applications/inventory_and_mrp/inventory/shipping/setup/third_party_shipper.html">
-                            <field name="module_delivery_fedex" widget="upgrade_boolean"/>
+                            <field name="module_delivery_fedex"/>
                         </setting>
                         <setting id="shipping_costs_usps" help="Compute shipping costs and ship with USPS"
                                  documentation="/applications/inventory_and_mrp/inventory/shipping/setup/third_party_shipper.html">
-                            <field name="module_delivery_usps" widget="upgrade_boolean"/>
+                            <field name="module_delivery_usps"/>
                         </setting>
                         <setting id="shipping_costs_bpost" help="Compute shipping costs and ship with bpost"
                                  documentation="/applications/inventory_and_mrp/inventory/shipping/setup/third_party_shipper.html">
-                            <field name="module_delivery_bpost" widget="upgrade_boolean"/>
+                            <field name="module_delivery_bpost"/>
                         </setting>
                         <setting id="shipping_costs_easypost" help="Compute shipping costs and ship with Easypost"
                                  documentation="/applications/inventory_and_mrp/inventory/shipping/setup/third_party_shipper.html">
-                            <field name="module_delivery_easypost" widget="upgrade_boolean"/>
+                            <field name="module_delivery_easypost"/>
                         </setting>
                         <setting id="shipping_costs_sendcloud" help="Compute shipping costs and ship with Sendcloud"
                                  documentation="/applications/inventory_and_mrp/inventory/shipping/setup/third_party_shipper.html">
-                            <field name="module_delivery_sendcloud" widget="upgrade_boolean"/>
+                            <field name="module_delivery_sendcloud"/>
                         </setting>
                         <setting id="shipping_costs_shiprocket" help="Compute shipping costs and ship with Shiprocket"
                                  documentation="/applications/inventory_and_mrp/inventory/shipping/setup/third_party_shipper.html">
-                            <field name="module_delivery_shiprocket" widget="upgrade_boolean"/>
+                            <field name="module_delivery_shiprocket"/>
                         </setting>
                         <setting id="shipping_costs_starshipit" help="Compute shipping costs and ship with Starshipit"
                                  documentation="/applications/inventory_and_mrp/inventory/shipping/setup/third_party_shipper.html">
-                            <field name="module_delivery_starshipit" widget="upgrade_boolean"/>
+                            <field name="module_delivery_starshipit"/>
                         </setting>
                     </block>
                     <block title="Invoicing" name="invoicing_setting_container">
