@@ -35,6 +35,7 @@ async function actionGetDrive(env, action, type) {
         // Now this will correctly count the actual invoices (e.g., 2), not characters!
         const invoiceIds = Object.keys(parsedInvoices);
         let successCount = 0;
+        let failedInvoices = [];  // Track failed invoices with error details
         
         console.log(` Found ${invoiceIds.length} actual invoices to process.`);
         
@@ -65,6 +66,10 @@ async function actionGetDrive(env, action, type) {
                     console.log(` Invoice ${i + 1} is safely in Odoo!`);
                 } else if (chunkResult.error) {
                     console.error(` Token error on invoice ${i + 1}:`, chunkResult.error);
+                    failedInvoices.push({
+                        id: invId,
+                        error: chunkResult.error
+                    });
                 }
                 
                 // Pause for 2 seconds to let the USB token breathe
@@ -72,10 +77,38 @@ async function actionGetDrive(env, action, type) {
                 
             } catch (e) {
                 console.error("Connection lost during loop", e);
+                failedInvoices.push({
+                    id: invId,
+                    error: e.message || "Connection lost during signing"
+                });
             }
         }
         
         console.log(`x Finished! Successfully pushed ${successCount} out of ${invoiceIds.length} invoices.`);
+        
+        // Build error details message
+        let errorDetails = "";
+        if (failedInvoices.length > 0) {
+            errorDetails = "\n\nFailed invoices:\n";
+            failedInvoices.forEach(failed => {
+                errorDetails += `- Invoice ${failed.id}: ${failed.error}\n`;
+            });
+        }
+        
+        // Show success/failure message to user
+        if (successCount === invoiceIds.length) {
+            dialog.add(AlertDialog, {
+                body: _t("Success! All %s invoices have been signed and uploaded successfully.", invoiceIds.length),
+            });
+        } else if (successCount > 0) {
+            dialog.add(AlertDialog, {
+                body: _t("Partial success: %s out of %s invoices have been signed and uploaded successfully.", successCount, invoiceIds.length) + errorDetails,
+            });
+        } else {
+            dialog.add(AlertDialog, {
+                body: _t("Failed: None of the invoices could be signed. Please check the middleware and try again.") + errorDetails,
+            });
+        }
         
         actionService.doAction({
             type: "ir.actions.client",
@@ -100,6 +133,11 @@ async function actionGetDrive(env, action, type) {
             dialog.add(AlertDialog, { body: _t("Unexpected error: “%s”", result.error) });
         } else if (result[key]) {
             await orm.call("l10n_eg_edi.thumb.drive", method, [[drive_id], result[key]]);
+            dialog.add(AlertDialog, {
+                body: type === "certificate" 
+                    ? _t("Success! Certificate has been set up successfully.") 
+                    : _t("Success! Invoices have been signed and uploaded successfully."),
+            });
             actionService.doAction({ type: "ir.actions.client", tag: "reload" });
         }
     }
