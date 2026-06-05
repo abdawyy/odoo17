@@ -187,11 +187,7 @@
                         </block>
 
                         <widget name='res_config_dev_tool'/>
-                        <div id='about'>
-                            <block title="About" name="about_setting_container">
-                                <widget name='res_config_edition'/>
-                            </block>
-                        </div>
+
                     </app>
                 </xpath>
             </field>
