@@ -3,55 +3,43 @@
 import { AlertDialog } from "@web/core/confirmation_dialog/confirmation_dialog";
 import { registry } from "@web/core/registry";
 import { _t } from "@web/core/l10n/translation";
-import { markup } from "@odoo/owl"; 
+import { markup } from "@odoo/owl";
 
 async function actionGetDrive(env, action, type) {
     const { drive_id, sign_host: host } = action.params;
-    const { orm, http, dialog, action: actionService } = env.services;
+    const { orm, http, dialog, action: actionService, notification } = env.services;
 
     let route = host;
-    let method, key;
-
-    // ------------------------------------------------------------------
-    // SCENARIO 1: SIGNING INVOICES
-    // ------------------------------------------------------------------
-    if (type === "sign") {
+    let key, method;
+    if (type === "certificate") {
+        route += "/hw_l10n_eg_eta/certificate";
+        method = "set_certificate";
+        key = "certificate";
+    } else if (type === "sign") {
         route += "/hw_l10n_eg_eta/sign";
         method = "set_signature_data";
         key = "invoices";
+    }
 
-        // FATAL CHECK: Did the Python backend actually send us invoices?
-        if (!action.params.invoices || action.params.invoices === "{}" || action.params.invoices === "[]") {
-            await dialog.add(AlertDialog, {
-                body: _t("No valid invoices were received from Odoo. Ensure the selected invoices are 'Posted' and not already signed."),
-                confirmLabel: _t("OK"),
-            });
-            return; // Stop execution immediately
-        }
+    let result = {};
 
+    if (type === "sign" && action.params.invoices) {
+        
         const parsedInvoices = typeof action.params.invoices === "string" 
             ? JSON.parse(action.params.invoices) 
             : action.params.invoices;
             
         const invoiceIds = Object.keys(parsedInvoices);
-        
-        // Secondary check just in case parsing resulted in an empty object
-        if (invoiceIds.length === 0) {
-            await dialog.add(AlertDialog, {
-                body: _t("The invoice list is empty. Cannot proceed with signing."),
-            });
-            return;
-        }
-
         let successCount = 0;
         let failedInvoices = []; 
         
-        console.log(`Found ${invoiceIds.length} actual invoices to process.`);
+        console.log(` Found ${invoiceIds.length} actual invoices to process.`);
         
         for (let i = 0; i < invoiceIds.length; i++) {
             const invId = invoiceIds[i];
-            const singleInvoiceData = { [invId]: parsedInvoices[invId] };
+            console.log(` Processing invoice ${i + 1} of ${invoiceIds.length}...`);
             
+            const singleInvoiceData = { [invId]: parsedInvoices[invId] };
             const singlePayload = {
                 ...action.params,
                 invoices: JSON.stringify(singleInvoiceData)
@@ -61,86 +49,86 @@ async function actionGetDrive(env, action, type) {
                 let chunkResult = await http.post(route, singlePayload);
                 
                 if (chunkResult[key]) {
-                    // Success! Push to server
+                    console.log(` Signature successful! Pushing to Odoo server immediately...`);
                     await orm.call("l10n_eg_edi.thumb.drive", method, [[drive_id], chunkResult[key]]);
                     successCount++;
+                    console.log(` Invoice ${i + 1} is safely in Odoo!`);
                 } else if (chunkResult.error) {
-                    console.error(`Token error on invoice ${invId}:`, chunkResult.error);
-                    failedInvoices.push({ id: invId, error: chunkResult.error });
+                    console.error(` Token error on invoice ${invId}:`, chunkResult.error);
+                    failedInvoices.push(`- Invoice ID ${invId}: ${chunkResult.error}`);
                     
+                    // Stop the loop instantly if token is missing
                     const errStr = chunkResult.error.toLowerCase();
                     if (errStr.includes("token") || errStr.includes("pin") || errStr.includes("found")) {
-                        break; // Abort loop if the flash memory is missing
+                        break; 
                     }
                 }
                 
-                // Pause for 2 seconds to let the USB token breathe
                 await new Promise(resolve => setTimeout(resolve, 2000));
                 
             } catch (e) {
-                await dialog.add(AlertDialog, {
-                    body: _t("Error trying to connect to the middleware. Is the middleware running?"),
-                });
-                return; 
+                console.error("Connection lost during loop", e);
+                failedInvoices.push(`- Invoice ID ${invId}: Failed to connect to middleware`);
+                break; // Stop loop if middleware crashes
             }
         }
         
-        let errorDetails = "";
-        if (failedInvoices.length > 0) {
-            errorDetails = "<br/><br/><b>" + _t("Failed Invoices:") + "</b><br/>";
-            failedInvoices.forEach(failed => {
-                errorDetails += `- Invoice ID ${failed.id}: ${failed.error}<br/>`;
+        console.log(`Finished! Successfully pushed ${successCount} out of ${invoiceIds.length} invoices.`);
+        
+        // ------------------------------------------------------------------
+        // SUCCESS / ERROR NOTIFICATIONS
+        // ------------------------------------------------------------------
+        if (successCount === invoiceIds.length && invoiceIds.length > 0) {
+            // 100% Success: Show Green Toast
+            notification.add(
+                _t("All invoices have been signed and uploaded successfully."),
+                { title: _t("Success!"), type: "success" }
+            );
+        } else {
+            // Partial Success or Failure: Show Popup with Errors
+            let messageBody = "";
+            if (successCount > 0) {
+                messageBody = _t("Partial success: Some invoices were signed, but others failed.") + 
+                              "<br/><br/><b>" + _t("Errors:") + "</b><br/>" + failedInvoices.join("<br/>");
+            } else {
+                messageBody = _t("Failed: No invoices could be signed. Please check your USB token.") + 
+                              "<br/><br/><b>" + _t("Errors:") + "</b><br/>" + failedInvoices.join("<br/>");
+            }
+            
+            await dialog.add(AlertDialog, {
+                body: markup(messageBody),
+                confirmLabel: _t("OK"),
             });
         }
-        
-        let messageBody = "";
-        if (successCount === invoiceIds.length && invoiceIds.length > 0) {
-            messageBody = _t("Success! All invoices have been signed and uploaded successfully.");
-        } else if (successCount > 0) {
-            messageBody = _t("Partial success: Some invoices were successfully signed, but others failed.") + errorDetails;
-        } else {
-            messageBody = _t("Failed: No invoices could be signed. Please check your USB token and middleware.") + errorDetails;
-        }
-        
-        await dialog.add(AlertDialog, {
-            body: markup(messageBody),
-            confirmLabel: _t("OK"),
-        });
-        
+
         actionService.doAction({ type: "ir.actions.client", tag: "reload" });
         return;
-    } 
-    
-    // ------------------------------------------------------------------
-    // SCENARIO 2: SETTING UP THE CERTIFICATE
-    // ------------------------------------------------------------------
-    else if (type === "certificate") {
-        route += "/hw_l10n_eg_eta/certificate";
-        method = "set_certificate";
-        key = "certificate";
-
-        let result = {};
+        
+    } else {
+        // ------------------------------------------------------------------
+        // CERTIFICATES LOGIC
+        // ------------------------------------------------------------------
         try {
             result = await http.post(route, action.params);
         } catch {
-            await dialog.add(AlertDialog, {
+            dialog.add(AlertDialog, {
                 body: _t("Error trying to connect to the middleware. Is the middleware running?"),
             });
             return;
         }
         
         if (result.error) {
-            await dialog.add(AlertDialog, { body: _t("Unexpected error: ") + result.error });
+            dialog.add(AlertDialog, { body: _t("Unexpected error: ") + result.error });
         } else if (result[key]) {
             await orm.call("l10n_eg_edi.thumb.drive", method, [[drive_id], result[key]]);
-            await dialog.add(AlertDialog, {
-                body: _t("Success! Certificate has been set up successfully."),
-                confirmLabel: _t("OK"),
-            });
+            
+            // Show Green Toast for Certificate Success
+            notification.add(
+                _t("Certificate has been set up successfully."),
+                { title: _t("Success!"), type: "success" }
+            );
+            
             actionService.doAction({ type: "ir.actions.client", tag: "reload" });
-        } else {
-            // Catch-all if the middleware returns weird empty data
-            await dialog.add(AlertDialog, { body: _t("Unknown error: No certificate data returned from middleware.") });
         }
     }
 }
