@@ -96,19 +96,19 @@ async function actionGetDrive(env, action, type) {
         }
         
         // Show success/failure message to user
+        let messageBody = "";
         if (successCount === invoiceIds.length) {
-            dialog.add(AlertDialog, {
-                body: _t("Success! All %s invoices have been signed and uploaded successfully.", invoiceIds.length),
-            });
+            messageBody = _t("Success! All %s invoices have been signed and uploaded successfully.", invoiceIds.length);
         } else if (successCount > 0) {
-            dialog.add(AlertDialog, {
-                body: _t("Partial success: %s out of %s invoices have been signed and uploaded successfully.", successCount, invoiceIds.length) + errorDetails,
-            });
+            messageBody = _t("Partial success: %s out of %s invoices have been signed and uploaded successfully.", successCount, invoiceIds.length) + errorDetails;
         } else {
-            dialog.add(AlertDialog, {
-                body: _t("Failed: None of the invoices could be signed. Please check the middleware and try again.") + errorDetails,
-            });
+            messageBody = _t("Failed: None of the invoices could be signed. Please check the middleware and try again.") + errorDetails;
         }
+        
+        await dialog.add(AlertDialog, {
+            body: messageBody,
+            confirmLabel: _t("OK"),
+        });
         
         actionService.doAction({
             type: "ir.actions.client",
@@ -133,10 +133,11 @@ async function actionGetDrive(env, action, type) {
             dialog.add(AlertDialog, { body: _t("Unexpected error: “%s”", result.error) });
         } else if (result[key]) {
             await orm.call("l10n_eg_edi.thumb.drive", method, [[drive_id], result[key]]);
-            dialog.add(AlertDialog, {
+            await dialog.add(AlertDialog, {
                 body: type === "certificate" 
                     ? _t("Success! Certificate has been set up successfully.") 
                     : _t("Success! Invoices have been signed and uploaded successfully."),
+                confirmLabel: _t("OK"),
             });
             actionService.doAction({ type: "ir.actions.client", tag: "reload" });
         }
